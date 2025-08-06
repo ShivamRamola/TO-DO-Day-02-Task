@@ -1,0 +1,166 @@
+Here are detailed, **interview-ready answers** for each of the Python-related questions shown in the image:
+
+---
+
+### **1. How do you open and write to a file in Python?**
+
+You can open and write to a file using the built-in `open()` function with the write (`'w'`) or append (`'a'`) mode. Here's an example:
+
+```python
+with open('example.txt', 'w') as file:
+    file.write('Hello, World!')
+```
+
+- `'w'` mode **overwrites** the file if it exists or creates a new file.
+- `'a'` mode **appends** to the file without removing existing content.
+- The `with` statement ensures the file is automatically closed after writing.
+
+✅ **Interview Tip:** Mention the importance of using `with` to handle file resources safely and prevent memory leaks.
+
+---
+
+### **2. What are common file modes?**
+
+| Mode   | Description                                                 |
+| ------ | ----------------------------------------------------------- |
+| `'r'`  | Read-only (default). File must exist.                       |
+| `'w'`  | Write mode. Creates new or truncates existing file.         |
+| `'a'`  | Append mode. Adds content to the end of the file.           |
+| `'r+'` | Read and write mode. File must exist.                       |
+| `'b'`  | Binary mode (used with other modes, like `'rb'` or `'wb'`). |
+| `'x'`  | Exclusive creation. Fails if file exists.                   |
+
+✅ **Interview Tip:** Be prepared to explain when to use `'r+'` or `'a'` over `'w'`.
+
+---
+
+### **3. What’s the use of `.strip()`?**
+
+`.strip()` is a string method used to remove leading and trailing whitespace (including `\n`, `\t`, and spaces) from a string.
+
+```python
+text = "  Hello World\n"
+print(text.strip())  # Output: "Hello World"
+```
+
+✅ **Use case in file handling:** When reading lines from a file, `.strip()` helps clean up newline characters or spaces.
+
+---
+
+### **4. How do lists work in Python?**
+
+Python lists are dynamic arrays used to store **ordered, mutable** sequences of items. You can store any data type, including mixed types.
+
+```python
+my_list = [1, 'hello', 3.14, True]
+```
+
+- **Mutable**: You can modify, add, or remove items.
+- **Indexed**: Items can be accessed by index (`my_list[0]`).
+- **Supports slicing**: `my_list[1:3]`
+
+✅ **Interview Tip:** Lists are implemented as dynamic arrays, so indexing is O(1), but insertion/removal (except at the end) can be O(n).
+
+---
+
+### **5. What is the difference between `append()` and `insert()`?**
+
+- **`append()`** adds an element **to the end** of the list.
+
+  ```python
+  lst = [1, 2]
+  lst.append(3)  # [1, 2, 3]
+  ```
+
+- **`insert(index, value)`** adds an element **at a specific index**, shifting other elements.
+
+  ```python
+  lst.insert(1, 'a')  # [1, 'a', 2, 3]
+  ```
+
+✅ **Performance Tip:** `append()` is O(1); `insert()` is O(n) due to shifting elements.
+
+---
+
+### **6. How can you remove elements from a list?**
+
+Several methods are available:
+
+- `remove(value)` – Removes the first occurrence of value.
+- `pop(index)` – Removes and returns the item at the given index.
+- `del list[index]` – Deletes the item at the index.
+- `clear()` – Removes all elements.
+
+```python
+lst = [1, 2, 3]
+lst.remove(2)     # [1, 3]
+item = lst.pop()  # item = 3, list = [1]
+```
+
+✅ **Interview Tip:** Be cautious with `remove()` if the item doesn’t exist—it raises `ValueError`.
+
+---
+
+### **7. What are context managers (`with` statement)?**
+
+A context manager in Python manages resources like files or database connections. The `with` statement ensures proper setup and cleanup (e.g., closing a file).
+
+```python
+with open('file.txt') as f:
+    data = f.read()
+```
+
+Under the hood, `with` calls:
+
+- `__enter__()` when the block starts
+- `__exit__()` when the block ends
+
+✅ **Best Practice:** Always use `with` for file I/O to handle exceptions and ensure the file is closed.
+
+---
+
+### **8. How do you loop through a file line by line?**
+
+You can use a `for` loop directly on the file object:
+
+```python
+with open('data.txt', 'r') as file:
+    for line in file:
+        print(line.strip())
+```
+
+- This approach is **memory-efficient** for large files.
+- `line.strip()` removes the newline character.
+
+✅ **Interview Tip:** This method is preferred over `readlines()` for large files to avoid loading everything into memory.
+
+---
+
+### **9. What is a data structure?**
+
+A data structure is a **way of organizing and storing data** so it can be accessed and modified efficiently. Examples in Python include:
+
+- **List** – Ordered, mutable.
+- **Tuple** – Ordered, immutable.
+- **Set** – Unordered, unique elements.
+- **Dictionary** – Key-value pairs.
+
+✅ **Why It Matters:** Choosing the right data structure affects performance and readability of your code.
+
+---
+
+### **10. What happens if the file doesn’t exist?**
+
+- Opening a **non-existent file in `'r'` or `'r+'` mode** will raise a `FileNotFoundError`.
+
+  ```python
+  with open('no_file.txt', 'r')  # Raises FileNotFoundError
+  ```
+
+- Opening a file in **`'w'` or `'a'`** mode **will create** the file if it doesn't exist.
+
+✅ **Interview Tip:** Always use try-except blocks or `os.path.exists()` to handle such cases gracefully.
+
+---
+
+If you want this in **PDF or notes format** for revision or mock interviews, I can generate that too. Let me know.
